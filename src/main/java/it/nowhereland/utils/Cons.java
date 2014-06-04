@@ -16,6 +16,21 @@ public abstract class Cons<T> implements Iterable<T> {
         return new NonEmpty(head, this);
     }
 
+    public abstract boolean isEmpty(); 
+    public T head() { return head; }
+    public Cons<T> rest() { return rest; }
+    public int size() { return size; }
+
+    public String toString() { return toString; }
+    public boolean equals(Object that) {
+        if (that instanceof Cons) {
+            Cons<T> c = (Cons<T>)that;
+            if (c.isEmpty() && this.isEmpty()) return true;
+            else return c.head().equals(this.head()) 
+                         && c.rest().equals(this.rest());
+        } else return false;
+    }
+
     public java.util.Iterator<T> iterator() {
         return new Iterator(this);
     }
@@ -28,11 +43,6 @@ public abstract class Cons<T> implements Iterable<T> {
         public void remove() { throw new UnsupportedOperationException(); }
     }
 
-    public abstract boolean isEmpty(); 
-    public String toString() { return toString; }
-    public T head() { return head; }
-    public Cons<T> rest() { return rest; }
-    public int size() { return size; }
     private static class Empty<T> extends Cons<T> {
         Empty() { super(null, null, "[]", 0); }
         public boolean isEmpty() { return true; }

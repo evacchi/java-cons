@@ -48,4 +48,15 @@ public class AppTest
             j--;
         }
     }
+
+    public void testEqualsEmpty() {
+        assertTrue(Cons.empty().equals(Cons.empty()));
+    }
+
+
+    public void testEquals() {
+        Cons<Integer> intA = Cons.empty().cons(1).cons(2);
+        Cons<Integer> intB = Cons.empty().cons(1).cons(2);
+        assertTrue(intA.equals(intB));
+    }
 }
