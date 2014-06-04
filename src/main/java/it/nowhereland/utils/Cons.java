@@ -4,7 +4,7 @@ public abstract class Cons<T> implements Iterable<T> {
     private final T head;
     private final Cons<T> rest;
     private final int size ;
-    public static final Cons EMPTY = new Empty();
+    private static final Cons EMPTY = new Empty();
     public static final <T> Cons<T> empty() { return (Cons<T>) EMPTY; }
     protected final String toString;
     protected Cons(T head, Cons<T> rest, String toString, int size) { 
